@@ -1,0 +1,36 @@
+# FashionAI Project Configuration
+project_name: "FashionAI"
+version: "1.0.0"
+environment: "production"
+seed: 42
+device: "cuda"
+
+model:
+  backbone: "efficientnet_b3" # Options: efficientnet_b3, resnet50, convnext_tiny
+  pretrained: true
+  num_classes: 5
+  dropout_rate: 0.3
+  embedding_dim: 512
+
+training:
+  batch_size: 32
+  epochs: 25
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  patience: 5
+  mixed_precision: true
+  num_workers: 4
+  checkpoint_dir: "models/checkpoints"
+  log_dir: "models/logs"
+
+data:
+  image_size: 224
+  train_dir: "dataset/train"
+  val_dir: "dataset/validation"
+  test_dir: "dataset/test"
+  labels_file: "dataset/labels.csv"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false

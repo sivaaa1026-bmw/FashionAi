@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  fashionai-api:
+    build: .
+    container_name: fashionai_service
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./dataset:/app/dataset
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+    restart: always
